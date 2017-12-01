@@ -1,0 +1,8 @@
+{
+  "name": "Emotisphere Chrome Extension",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "AI-powered sentiment analysis for written communication",
+  "homepage_url": "https://emotisphere2.herokuapp.com",
+  "default_locale": "en"
+}
