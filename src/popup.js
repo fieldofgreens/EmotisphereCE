@@ -2,28 +2,28 @@ $(document).ready(function() {
 
 let app = {
 
-  server: 'https://emotisphere2.herokuapp.com/entries',
+  // server: 'https://emotisphere2.herokuapp.com/entries',
 
-  send: function(message) {
-    $.ajax({
-      type: 'POST',
-      url: app.server,
-      data: {
-        // title: this.state.newestTitle,
-        text: message,
-        // username: this.state.username
-      },
-      success: function() {
-        console.log('post success')
-      }
-    }).then(function() {
-      context.props.rerender();
-    }); 
-  },
+  // send: function(message) {
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: app.server,
+  //     data: {
+  //       // title: this.state.newestTitle,
+  //       text: message,
+  //       // username: this.state.username
+  //     },
+  //     success: function() {
+  //       console.log('post success')
+  //     }
+  //   }).then(function() {
+  //     context.props.rerender();
+  //   }); 
+  // },
 
   handleSubmit: function(thing) {
-    console.log('thing ', thing);
-   console.log(document.getElementById('textfield'));
+    console.log('thing ', thing.value);
+    console.log(document.getElementById('textfield').value);
     // let message = {
     //   text: app.$message.val()
     // };
