@@ -24,12 +24,12 @@ let app = {
   handleSubmit: function(thing) {
     console.log('thing ', thing.value);
     console.log(document.getElementById('textfield').value);
-    // let message = {
-    //   text: app.$message.val()
-    // };
+    let message = {
+      text: thing.value
+    };
     // console.log(message.text);
     // app.send(message);
-    // event.preventDefault();
+    // event.prevent Default();
   },
 
   init: function() {
