@@ -4,9 +4,16 @@
   "manifest_version": 2,
   "description": "AI-powered sentiment analysis for written communication",
   "homepage_url": "https://emotisphere2.herokuapp.com",
+  "permissions": [
+    "<all_urls>"
+  ],
   "browser_action": {
     "default_icon": "icons/icon.png",
     "default_title": "Emotisphere",
     "default_popup": "src/browser_action/browser_action.html"
   }
+  // "background": {
+  //   "scripts": ["events.js"],
+  //   "persistent": false
+  // }
 }
