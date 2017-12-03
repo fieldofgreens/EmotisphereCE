@@ -1,5 +1,4 @@
-$(document).ready(function() {
-  
+
   let app = {
   
     server: 'https://emotisphere2.herokuapp.com/guest',
@@ -26,6 +25,8 @@ $(document).ready(function() {
       console.log('data in handlesubmit =', data);
 
       app.send(data).then((result)=>{
+        let resultsDiv = document.getElementById('results');
+        resultsDiv.append(JSON.stringify(result));
         console.log('send then success result =', result);
       }).catch((error)=>{
         console.log('catch error =', error);
@@ -60,7 +61,4 @@ $(document).ready(function() {
   }
   
   app.init();
-  
-  });
-  
   
