@@ -25,7 +25,9 @@
       console.log('data in handlesubmit =', data);
 
       app.send(data).then((result)=>{
+        let resultsTitle = document.getElementById('resultsTitle');
         let resultsDiv = document.getElementById('results');
+        resultsDiv.append('Please see your results below ');
         resultsDiv.append(JSON.stringify(result));
         console.log('send then success result =', result);
       }).catch((error)=>{
