@@ -12,14 +12,19 @@
     <h1>Hello from Emotisphere!</h1>  
     <div id="submitformdiv">
       <form action="#" id="submit_form" method="post">
-        <textarea class="message" id="textfield" name="message" autofocus="true" rows="6" cols="45" maxlength="2000" placeholder="Enter text here" required></textarea>
+        <textarea class="message" id="textfield" name="message" autofocus="true" rows="8" cols="65" maxlength="2000" placeholder="Enter text here" required></textarea>
         <button type="submit" id="submitbutton" title="submit" value="submit" >Submit</button>
       </div>
     </form><br></br>
     <div id="resultsTitle"><br></br>
     <div id="results">
+      <div id="chartcontainer"></div>
     </div>
   </div>
     <script src="../popup.js"></script>
+    <script src="../highcharts.js"></script>
+    <script src="../highcharts-more.js"></script>
+    <script src="../exporting.js"></script>
+    <script src="../chart.js"></script>
   </body>      
 </html>

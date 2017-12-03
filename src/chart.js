@@ -1,6 +1,6 @@
 'use strict';
 
-Highcharts.chart('container', {
+Highcharts.chart('chartcontainer', {
 
     chart: {
         polar: true,
