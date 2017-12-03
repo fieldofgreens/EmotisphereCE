@@ -9,7 +9,7 @@ $(document).ready(function() {
       console.log('data in send =', data);
       return $.ajax({
         type: 'GET',
-        url: app.test,
+        url: app.server,
         // crossDomain: true,
         // dataType: "json",
         // contentType: "application/json",
