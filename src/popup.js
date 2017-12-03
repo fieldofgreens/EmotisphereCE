@@ -2,24 +2,26 @@ $(document).ready(function() {
   
   let app = {
   
-    server: 'https://emotisphere2.herokuapp.com/entries',
-  
+    server: 'https://emotisphere2.herokuapp.com/guest',
+    test: 'http://localhost:8080/guest',
+
     send: function(data) {
       console.log('data in send =', data);
       return $.ajax({
-        type: 'POST',
-        url: app.server,
-        crossDomain: true,
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify(data)
+        type: 'GET',
+        url: app.test,
+        // crossDomain: true,
+        // dataType: "json",
+        // contentType: "application/json",
+        data: {
+          text: data.text
+        }
       });
     },
 
     handleSubmit: function(thing) {
       let data = {
-        text: thing.value,
-        title: "Guest Post from Extension"
+        "text": thing.value,
       };
       console.log('data in handlesubmit =', data);
 
