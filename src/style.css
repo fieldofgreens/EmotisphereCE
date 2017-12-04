@@ -1,10 +1,22 @@
 #mainPopup {
     padding: 10px;
-    height: 400px;
-    width: 400px;
+    height: 550px;
+    width: 550px;
     font-family: Arial;
   }
 
+#chartContainer {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#resultsTitle {
+    margin-bottom: 10px;
+}
+
+#results {
+    margin-bottom: 10px;
+}
 h1 {
     font-size: 2em;
 }
