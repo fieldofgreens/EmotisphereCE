@@ -28,51 +28,69 @@
         let resultsTitle = document.getElementById('resultsTitle');
         let resultsDiv = document.getElementById('results');
         let chartContainer = document.getElementById('chartContainer');
-        resultsDiv.append('Please see your results below ');
-        resultsDiv.append(JSON.stringify(result));
+        resultsDiv.append('Most impactful sentences: ');
+        // console.log('received result = ', result);
+        
+        // let output = result.watsonData.sentences.map(function(sentence, i) {
+        //   return sentence.text + '\n' + sentence.allSentiments.map(function(emotion) {
+        //     return emotion + '\n';
+        //   });
+        // });
+        // let $results = $('results');
+        result.watsonData.sentences.map(function(sentence, i) {
+          resultsDiv.append(sentence.text + '\n') + sentence.allSentiments.map(function(emotion) {
+            resultsDiv.append(emotion + '\n');
+          });
+        });
+        // resultsDiv.append(output);
+
         let chart = function() {
           Highcharts.chart('chartContainer', {
+            
             chart: {
               polar: true,
-              type: 'line'
-            },        
-            title: {
-              text: 'Budget vs spending',
+              type: 'area'
+          },
+
+          title: {
+              text: "Your Text's Sentiments",
               x: -80
-            },        
-            pane: {
+          },
+
+          pane: {
               size: '80%'
-            },        
-            xAxis: {
-              categories: ['Sales', 'Marketing', 'Development', 'Customer Support', 'Information Technology', 'Administration'],
+          },
+
+          xAxis: {
+              categories: ['Anger', 'Fear', 'Joy', 'Sadness', 'Analytical', 'Confident', 'Tentative'],
               tickmarkPlacement: 'on',
               lineWidth: 0
-            },        
-            yAxis: {
+          },
+
+          yAxis: {
               gridLineInterpolation: 'polygon',
               lineWidth: 0,
               min: 0
-            },        
-            tooltip: {
+          },
+
+          tooltip: {
               shared: true,
-              pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
-            },        
-            legend: {
-              align: 'right',
+              pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.2f}%</b><br/>'
+          },
+
+          legend: {
               verticalAlign: 'top',
               y: 70,
               layout: 'vertical'
-            },
-            series: [{
-              name: 'Allocated Budget',
-              data: [43000, 19000, 60000, 35000, 17000, 10000],
-              pointPlacement: 'on'
-            }, {
-              name: 'Actual Spending',
-              data: [50000, 39000, 42000, 31000, 26000, 14000],
-              pointPlacement: 'on'
-            }]
-          });
+          },
+
+          series: [{
+      name: 'Sentiment Scores (0-100)',
+      data: result.watsonData.overallData,
+      pointPlacement: 'on'
+  }]
+            
+                    });
         };
                 
         chartContainer.append(chart());
@@ -111,3 +129,5 @@
   
   app.init();
   
+
+
