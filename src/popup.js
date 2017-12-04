@@ -25,28 +25,21 @@
       console.log('data in handlesubmit =', data);
 
       app.send(data).then((result)=>{
-        let resultsTitle = document.getElementById('resultsTitle');
-        let resultsDiv = $('.results');
-        let chartContainer = document.getElementById('chartContainer');
-        resultsDiv.append('Most impactful sentences: ');
+        let resultsTitle = $('#resultsTitle');
+        let resultsDiv = $('#results');
+        let chartContainer = $('#chartContainer');
+        resultsTitle.append('Most impactful sentences: ');
 
 
-
-        // console.log('received result = ', result);
-
-        // let output = result.watsonData.sentences.map(function(sentence, i) {
-        //   return sentence.text + '\n' + sentence.allSentiments.map(function(emotion) {
-        //     return emotion + '\n';
-        //   });
-        // });
-        // let $results = $('results');
-        result.watsonData.sentences.map(function(sentence, i) {
-          var newLine = $('<div></div>');
-
+        result.watsonData.sentences.map((sentence, i) => {
+        //create new sentence div
+          let newLine = $('<div class=\'sentence\'></div>');
           newLine.text(sentence.text);
-
-          resultsDiv.append(newLine) + sentence.allSentiments.map(function(emotion) {
-            resultsDiv.append(emotion);
+          resultsDiv.append(newLine) + sentence.allSentiments.map(emotion => {
+        //create new sentiment result div
+            let newSentiment = $('<div class=\'sentiment\'></div>');
+            newSentiment.text(emotion);
+            resultsDiv.append(newSentiment);
           });
         });
         // resultsDiv.append(output);
