@@ -1,6 +1,6 @@
 
   let app = {
-  
+
     server: 'https://emotisphere2.herokuapp.com/guest',
     test: 'http://localhost:8080/guest',
 
@@ -26,11 +26,14 @@
 
       app.send(data).then((result)=>{
         let resultsTitle = document.getElementById('resultsTitle');
-        let resultsDiv = document.getElementById('results');
+        let resultsDiv = $('.results');
         let chartContainer = document.getElementById('chartContainer');
         resultsDiv.append('Most impactful sentences: ');
+
+
+
         // console.log('received result = ', result);
-        
+
         // let output = result.watsonData.sentences.map(function(sentence, i) {
         //   return sentence.text + '\n' + sentence.allSentiments.map(function(emotion) {
         //     return emotion + '\n';
@@ -38,15 +41,19 @@
         // });
         // let $results = $('results');
         result.watsonData.sentences.map(function(sentence, i) {
-          resultsDiv.append(sentence.text + '\n') + sentence.allSentiments.map(function(emotion) {
-            resultsDiv.append(emotion + '\n');
+          var newLine = $('<div></div>');
+
+          newLine.text(sentence.text);
+
+          resultsDiv.append(newLine) + sentence.allSentiments.map(function(emotion) {
+            resultsDiv.append(emotion);
           });
         });
         // resultsDiv.append(output);
 
         let chart = function() {
           Highcharts.chart('chartContainer', {
-            
+
             chart: {
               polar: true,
               type: 'area'
@@ -89,10 +96,10 @@
       data: result.watsonData.overallData,
       pointPlacement: 'on'
   }]
-            
+
                     });
         };
-                
+
         chartContainer.append(chart());
         console.log('send then success result =', result);
       }).catch((error)=>{
@@ -110,7 +117,7 @@
       // console.log(message.text);
       // event.prevent Default();
     },
-  
+
     init: function() {
       console.log('initialized');
       document.getElementById('submitbutton').addEventListener('click', function(event) {
@@ -126,8 +133,8 @@
       // app.$send.on('click', app.handleSubmit);
     }
   }
-  
+
   app.init();
-  
+
 
 
