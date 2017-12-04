@@ -1,6 +1,6 @@
 
   let app = {
-  
+
     server: 'https://emotisphere2.herokuapp.com/guest',
     test: 'http://localhost:8080/guest',
 
@@ -25,28 +25,28 @@
       console.log('data in handlesubmit =', data);
 
       app.send(data).then((result)=>{
-        let resultsTitle = document.getElementById('resultsTitle');
-        let resultsDiv = document.getElementById('results');
-        let chartContainer = document.getElementById('chartContainer');
-        resultsDiv.append('Most impactful sentences: ');
-        // console.log('received result = ', result);
-        
-        // let output = result.watsonData.sentences.map(function(sentence, i) {
-        //   return sentence.text + '\n' + sentence.allSentiments.map(function(emotion) {
-        //     return emotion + '\n';
-        //   });
-        // });
-        // let $results = $('results');
-        result.watsonData.sentences.map(function(sentence, i) {
-          resultsDiv.append(sentence.text + '\n') + sentence.allSentiments.map(function(emotion) {
-            resultsDiv.append(emotion + '\n');
+        let resultsTitle = $('#resultsTitle');
+        let resultsDiv = $('#results');
+        let chartContainer = $('#chartContainer');
+        resultsTitle.append('Most impactful sentences: ');
+
+
+        result.watsonData.sentences.map((sentence, i) => {
+        //create new sentence div
+          let newLine = $('<div class=\"sentence\"></div>');
+          newLine.text('\"' + sentence.text + '\"');
+          resultsDiv.append(newLine) + sentence.allSentiments.map(emotion => {
+        //create new sentiment result div
+            let newSentiment = $('<div class=\"sentiment\"></div>');
+            newSentiment.text(emotion);
+            resultsDiv.append(newSentiment);
           });
         });
         // resultsDiv.append(output);
 
         let chart = function() {
           Highcharts.chart('chartContainer', {
-            
+
             chart: {
               polar: true,
               type: 'area'
@@ -89,10 +89,10 @@
       data: result.watsonData.overallData,
       pointPlacement: 'on'
   }]
-            
+
                     });
         };
-                
+
         chartContainer.append(chart());
         console.log('send then success result =', result);
       }).catch((error)=>{
@@ -110,7 +110,7 @@
       // console.log(message.text);
       // event.prevent Default();
     },
-  
+
     init: function() {
       console.log('initialized');
       document.getElementById('submitbutton').addEventListener('click', function(event) {
@@ -126,8 +126,8 @@
       // app.$send.on('click', app.handleSubmit);
     }
   }
-  
+
   app.init();
-  
+
 
 
