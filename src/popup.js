@@ -33,11 +33,11 @@
 
         result.watsonData.sentences.map((sentence, i) => {
         //create new sentence div
-          let newLine = $('<div class=\'sentence\'></div>');
-          newLine.text(sentence.text);
+          let newLine = $('<div class=\"sentence\"></div>');
+          newLine.text('\"' + sentence.text + '\"');
           resultsDiv.append(newLine) + sentence.allSentiments.map(emotion => {
         //create new sentiment result div
-            let newSentiment = $('<div class=\'sentiment\'></div>');
+            let newSentiment = $('<div class=\"sentiment\"></div>');
             newSentiment.text(emotion);
             resultsDiv.append(newSentiment);
           });
